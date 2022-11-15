@@ -9,7 +9,7 @@ class Customer:
         self.__rentals.append(arg)
 
     def getName(self):
-        self.__name
+        return self.__name
 
     def statement(self):
         totalAmount = 0
