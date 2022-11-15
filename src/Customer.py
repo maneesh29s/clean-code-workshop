@@ -1,4 +1,4 @@
-from Movie import Movie
+from .Movie import Movie
 
 class Customer:
     def __init__(self, name):
@@ -17,17 +17,20 @@ class Customer:
         result = "Rental Record for " + self.getName() + "\n"
         for each in self.__rentals:
             thisAmount = 0
-            match each.getDaysRented().getPriceCode():
-                case Movie.REGULAR:
-                    thisAmount += 2
-                    if each.getDaysRented() > 2:
-                        thisAmount += (each.getDaysRented() - 2) * 1.5
-                case Movie.NEW_RELEASE:
-                    thisAmount += each.getDaysRented() * 3
-                case Movie.CHILDREN:
-                    thisAmount += 1.5
-                    if each.getDaysRented() > 3:
-                        thisAmount += (each.getDaysRented() - 3) * 1.5
+            price_code = each.getDaysRented().getPriceCode()
+
+            if price_code == Movie.REGULAR:
+                thisAmount += 2
+                if each.getDaysRented() > 2:
+                    thisAmount += (each.getDaysRented() - 2) * 1.5
+
+            elif price_code == Movie.NEW_RELEASE:
+                thisAmount += each.getDaysRented() * 3
+
+            elif price_code == Movie.CHILDREN:
+                thisAmount += 1.5
+                if each.getDaysRented() > 3:
+                    thisAmount += (each.getDaysRented() - 3) * 1.5
             
             frequentRenterPoints+=1
             if each.getMovie().getPriceCode() == Movie.NEW_RELEASE and each.getDaysRented() > 1:
