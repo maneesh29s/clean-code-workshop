@@ -4,7 +4,7 @@ class Rental:
         self.__daysRented = daysRented
 
     def getDaysRented(self):
-        self.__daysRented
+        return self.__daysRented
 
     def getMovie(self):
-        self.__movie
+        return self.__movie

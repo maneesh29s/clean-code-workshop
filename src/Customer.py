@@ -17,7 +17,7 @@ class Customer:
         result = "Rental Record for " + self.getName() + "\n"
         for each in self.__rentals:
             thisAmount = 0
-            price_code = each.getDaysRented().getPriceCode()
+            price_code = each.getMovie().getPriceCode()
 
             if price_code == Movie.REGULAR:
                 thisAmount += 2
