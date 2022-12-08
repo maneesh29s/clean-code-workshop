@@ -1,10 +1,10 @@
 class Rental:
-    def __init__(self, movie, daysRented):
+    def __init__(self, movie, days_rented):
         self.__movie = movie
-        self.__daysRented = daysRented
+        self.__daysRented = days_rented
 
-    def getDaysRented(self):
+    def get_days_rented(self):
         return self.__daysRented
 
-    def getMovie(self):
+    def get_movie(self):
         return self.__movie

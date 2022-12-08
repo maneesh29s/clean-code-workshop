@@ -3,17 +3,15 @@ class Movie:
     REGULAR = 0
     NEW_RELEASE = 1
 
-    def __init__(self, title, priceCode):
+    def __init__(self, title, price_code):
         self.__title = title
-        self.__priceCode = priceCode
+        self.__priceCode = price_code
 
-    def getPriceCode(self):
+    def get_price_code(self):
         return self.__priceCode
 
-    def setPriceCode(self, arg):
+    def set_price_code(self, arg):
         self.__priceCode = arg
 
-    def getTitle(self):
+    def get_title(self):
         return self.__title
-
-

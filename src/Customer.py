@@ -1,43 +1,44 @@
 from .Movie import Movie
 
+
 class Customer:
     def __init__(self, name):
         self.__name = name
         self.__rentals = []
 
-    def addRental(self, arg):
+    def add_rental(self, arg):
         self.__rentals.append(arg)
 
-    def getName(self):
+    def get_name(self):
         return self.__name
 
     def statement(self):
-        totalAmount = 0
-        frequentRenterPoints = 0
-        result = "Rental Record for " + self.getName() + "\n"
+        total_amount = 0
+        frequent_renter_points = 0
+        result = "Rental Record for " + self.get_name() + "\n"
         for each in self.__rentals:
-            thisAmount = 0
-            price_code = each.getMovie().getPriceCode()
+            this_amount = 0
+            price_code = each.get_movie().get_price_code()
 
             if price_code == Movie.REGULAR:
-                thisAmount += 2
-                if each.getDaysRented() > 2:
-                    thisAmount += (each.getDaysRented() - 2) * 1.5
+                this_amount += 2
+                if each.get_days_rented() > 2:
+                    this_amount += (each.get_days_rented() - 2) * 1.5
 
             elif price_code == Movie.NEW_RELEASE:
-                thisAmount += each.getDaysRented() * 3
+                this_amount += each.get_days_rented() * 3
 
             elif price_code == Movie.CHILDREN:
-                thisAmount += 1.5
-                if each.getDaysRented() > 3:
-                    thisAmount += (each.getDaysRented() - 3) * 1.5
-            
-            frequentRenterPoints+=1
-            if each.getMovie().getPriceCode() == Movie.NEW_RELEASE and each.getDaysRented() > 1:
-                frequentRenterPoints+=1
-            result += "\t" + each.getMovie().getTitle() + "\t" + str(thisAmount) + "\n"
-            totalAmount += thisAmount
+                this_amount += 1.5
+                if each.get_days_rented() > 3:
+                    this_amount += (each.get_days_rented() - 3) * 1.5
 
-        result += "Amount owed is " + str(totalAmount) + "\n"
-        result += "You earned " + str(frequentRenterPoints) + " frequent renter points"
+            frequent_renter_points += 1
+            if each.get_movie().get_price_code() == Movie.NEW_RELEASE and each.get_days_rented() > 1:
+                frequent_renter_points += 1
+            result += "\t" + each.get_movie().get_title() + "\t" + str(this_amount) + "\n"
+            total_amount += this_amount
+
+        result += "Amount owed is " + str(total_amount) + "\n"
+        result += "You earned " + str(frequent_renter_points) + " frequent renter points"
         return result
