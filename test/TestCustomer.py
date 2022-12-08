@@ -2,11 +2,10 @@ import unittest
 from src.Customer import Customer
 
 
-class TestGetAreaRectangle(unittest.TestCase):
-    @staticmethod
-    def runTest():
+class TestCustomer(unittest.TestCase):
+    def runTest(self):
         customer = Customer("Random Name")
-        assert True
+        self.assertTrue(True)
 
 
 if __name__ == '__main__':
