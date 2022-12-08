@@ -19,7 +19,7 @@ class Customer:
         for each in self.__rentals:
             this_amount = 0
             price_code = each.get_movie().get_price_code()
-
+            # Determine amount for each line
             if price_code == Movie.REGULAR:
                 this_amount += 2
                 if each.get_days_rented() > 2:
