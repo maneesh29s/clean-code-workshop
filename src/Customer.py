@@ -1,40 +1,22 @@
+from src.Rentals import Rentals
+from src.StatementService import StatementService
+
+
 class Customer:
     def __init__(self, name):
         self.__name = name
-        self.__rentals = []
+        self.__rentals = Rentals()
 
     def add_rental(self, arg):
-        self.__rentals.append(arg)
+        self.__rentals.add(arg)
 
     def get_name(self):
         return self.__name
 
-    def statement(self):
-        result = "Rental Record for " + self.get_name() + "\n"
-        for rental in self.__rentals:
-            result += "\t" + rental.get_movie().get_title() + "\t" + str(rental.calculate_amount()) + "\n"
-
-        result += "Amount owed is " + str(self.total_amount()) + "\n"
-        result += "You earned " + str(self.total_frequent_renter_points()) + " frequent renter points"
-        return result
+    def text_statement(self):
+        return StatementService.generate_text_statement(self.__name, self.__rentals)
 
     def html_statement(self):
-        result = "<h1>Rental Record for " + self.get_name() + "</h1><br><p>"
-        for rental in self.__rentals:
-            result += rental.get_movie().get_title() + "\t" + str(rental.calculate_amount()) + "<br>"
+        return StatementService.generate_html_statement(self.__name, self.__rentals)
 
-        result += "Amount owed is " + str(self.total_amount()) + "<br>"
-        result += "You earned " + str(self.total_frequent_renter_points()) + " frequent renter points</p>"
-        return result
 
-    def total_frequent_renter_points(self):
-        frequent_renter_points = 0
-        for rental in self.__rentals:
-            frequent_renter_points += rental.calculate_frequent_renter_points()
-        return frequent_renter_points
-
-    def total_amount(self):
-        total_amount = 0
-        for rental in self.__rentals:
-            total_amount += rental.calculate_amount()
-        return total_amount
