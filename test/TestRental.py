@@ -1,6 +1,6 @@
 import unittest
 
-from src.Movie import Movie
+from src.Movie import Movie, Blue_Ray
 from src.Rental import Rental
 
 

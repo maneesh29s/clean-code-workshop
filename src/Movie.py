@@ -1,18 +1,18 @@
+from src.MovieType import *
+
+
 class Movie:
-    REGULAR = 0
-    NEW_RELEASE = 1
-    CHILDREN = 2
-    BLUE_RAY = 3
+    REGULAR = Regular()
+    NEW_RELEASE = New_Release()
+    CHILDREN = Children()
+    BLUE_RAY = Blue_Ray()
 
-    def __init__(self, title, price_code):
+    def __init__(self, title, movie_type):
         self.__title = title
-        self.__priceCode = price_code
+        self.__movie_type = movie_type
 
-    def get_price_code(self):
-        return self.__priceCode
-
-    def set_price_code(self, arg):
-        self.__priceCode = arg
+    def get_movie_type(self):
+        return self.__movie_type
 
     def get_title(self):
         return self.__title
