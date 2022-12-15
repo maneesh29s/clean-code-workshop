@@ -8,7 +8,7 @@ class Customer:
         self.__rentals = Rentals()
 
     def add_rental(self, arg):
-        self.__rentals.add(arg)
+        self.__rentals.append(arg)
 
     def get_name(self):
         return self.__name
